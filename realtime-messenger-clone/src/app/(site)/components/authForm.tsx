@@ -8,6 +8,7 @@ import {FieldValues, SubmitHandler, useForm} from 'react-hook-form'
 import Input from '@/app/components/inputs/Input'
 import Button from '@/app/components/Button'
 import AuthSocialButton from '@/app/components/AuthSocialButton'
+import axios from 'axios'
 type Variant = 'LOGIN' | 'REGISTER'
 const AuthForm = () => {
     const [variant, setVariant] = useState<Variant>('LOGIN')
@@ -34,7 +35,7 @@ const AuthForm = () => {
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         setIsLoading(true)
         if(variant === 'REGISTER'){
-            // axios Register
+            axios.post('/api/register', data)
             
         }
         if(variant === 'LOGIN'){
